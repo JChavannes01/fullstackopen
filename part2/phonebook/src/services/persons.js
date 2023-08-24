@@ -9,7 +9,12 @@ const create = (personObject) => {
     method: "POST",
     body: JSON.stringify(personObject),
     headers: { "content-type": "application/json" },
-  }).then((resp) => resp.json());
+  }).then((resp) => {
+    if (!resp.ok) {
+      throw new Error(`HTTP error! Status: ${resp.status}`);
+    }
+    return resp.json();
+  });
 };
 
 const update = (id, personObject) => {
@@ -17,12 +22,22 @@ const update = (id, personObject) => {
     method: "PUT",
     body: JSON.stringify(personObject),
     headers: { "content-type": "application/json" },
-  }).then((resp) => resp.json());
+  }).then((resp) => {
+    if (!resp.ok) {
+      throw new Error(`HTTP error! Status: ${resp.status}`);
+    }
+    return resp.json();
+  });
 };
 
 const remove = (id) => {
   return fetch(`${baseUrl}/${id}`, {
     method: "DELETE",
+  }).then((resp) => {
+    if (!resp.ok) {
+      throw new Error(`HTTP error! Status: ${resp.status}`);
+    }
+    return resp.json();
   });
 };
 
