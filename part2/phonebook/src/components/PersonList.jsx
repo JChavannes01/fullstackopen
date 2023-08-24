@@ -1,10 +1,11 @@
-const PersonList = ({ persons, filter }) => (
+const PersonList = ({ persons, filter, handleDelete }) => (
   <>
     {persons
       .filter(({ name }) => filter === "" || name.search(filter) >= 0)
-      .map(({ name, number }) => (
+      .map(({ id, name, number }) => (
         <div key={name}>
-          {name} {number}
+          {name} {number}{" "}
+          <button onClick={() => handleDelete(id)}>delete</button>
         </div>
       ))}
   </>
