@@ -1,4 +1,6 @@
-const baseUrl = "http://localhost:3001/persons";
+// const baseUrl = "http://localhost:3001/api/persons";
+// const baseUrl = "https://ysczdx-3001.csb.app/api/persons";
+const baseUrl = "/api/persons";
 
 const getAll = () => {
   return fetch(baseUrl).then((resp) => resp.json());
